@@ -2,6 +2,14 @@
 using System.Diagnostics;
 class Program
 {
+    static void PreencherInt(int[] vet, int n)
+    {
+        Random r = new Random(10);
+        for (int i = 0; i < n; i++)
+        {
+            vetI[i] = r.Next(1, 10);
+        }
+    }
     static void Selecao(int[] vet, int n, out long Comps, out long Movs)
     {
         Comps = 0; Movs = 0;
@@ -33,26 +41,21 @@ class Program
         int op1 = int.Parse(Console.ReadLine());
         do
         {
-            Random r = new Random(10);
-
             switch (op1) // Decimais ou inteiros
             {
                 case 1: // Inteiros
                     int[] vetI;
-                    Console.WriteLine("(1). 1000 elementos\n(2). 500000 elementos\n(3). Sair");
+                    Console.WriteLine("(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Sair");
                     int op2 = int.Parse(Console.ReadLine());
                     do
                     {
                         switch (op2) // Quantidade de elemento
                         {
-                            case 1: // 1000 elementos
+                            case 1: // 1.000 elementos
                                 long Comps, Movs = 0;
-                                vetI = new int[100000];
-                                for (int i = 0; i < vetI.Length; i++)
-                                {
-
-                                    vetI[i] = r.Next(1, 10);
-                                }
+                                vetI = new int[1000];
+                                PreencherInt(vetI, 1000);
+                                
                                 // Seleção
                                 Console.WriteLine("----SELEÇÃO----");
                                 stopWatch.Start();
@@ -66,14 +69,14 @@ class Program
 
 
                                 break;
-                            case 2: // Decimais
+                            case 2: // 500.000 elementos
 
                                 break;
                             default:
                                 Console.WriteLine("Opção inválida");
                                 break;
                         }
-                        Console.WriteLine("(1). Inteiros\n(2). Decimais\n(3). Sair");
+                        Console.WriteLine("(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Sair");
                         op2 = int.Parse(Console.ReadLine());
                     } while (op2 != 3);
                 break;

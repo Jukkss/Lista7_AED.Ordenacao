@@ -99,29 +99,29 @@ class Program
         if (esq < j) Quick(vet, esq, j, ref comps, ref movs);
         if (i < dir) Quick(vet, i, dir, ref comps, ref movs);
     }
-    static void Merge(int[] array, int esquerda, int meio, int direita, ref long comps, ref long movs)
+    static void Merge(int[] vet, int esq, int meio, int dir, ref long comps, ref long movs)
     {
-        int n1 = meio - esquerda + 1;
-        int n2 = direita - meio;
+        int n1 = meio - esq + 1;
+        int n2 = dir - meio;
 
         int[] L = new int[n1];
         int[] R = new int[n2];
 
-        for (int i = 0; i < n1; i++) { L[i] = array[esquerda + i]; movs++; }
-        for (int j = 0; j < n2; j++) { R[j] = array[meio + 1 + j]; movs++; }
+        for (int i = 0; i < n1; i++) { L[i] = vet[esq + i]; movs++; }
+        for (int j = 0; j < n2; j++) { R[j] = vet[meio + 1 + j]; movs++; }
 
-        int k = esquerda, x = 0, y = 0;
+        int k = esq, x = 0, y = 0;
 
         while (x < n1 && y < n2)
         {
             comps++;
             if (L[x] <= R[y])
             {
-                array[k] = L[x]; x++;
+                vet[k] = L[x]; x++;
             }
             else
             {
-                array[k] = R[y]; y++;
+                vet[k] = R[y]; y++;
             }
             movs++;
             k++;
@@ -129,69 +129,69 @@ class Program
 
         while (x < n1)
         {
-            array[k] = L[x]; x++; k++; movs++;
+            vet[k] = L[x]; x++; k++; movs++;
         }
 
         while (y < n2)
         {
-            array[k] = R[y]; y++; k++; movs++;
+            vet[k] = R[y]; y++; k++; movs++;
         }
     }
 
-    static void MergeSort(int[] array, int esquerda, int direita, ref long comps, ref long movs)
+    static void MergeSort(int[] vet, int esq, int dir, ref long comps, ref long movs)
     {
-        if (esquerda < direita)
+        if (esq < dir)
         {
-            int meio = (esquerda + direita) / 2;
+            int meio = (esq + dir) / 2;
 
-            MergeSort(array, esquerda, meio, ref comps, ref movs);
-            MergeSort(array, meio + 1, direita, ref comps, ref movs);
-            Merge(array, esquerda, meio, direita, ref comps, ref movs);
+            MergeSort(vet, esq, meio, ref comps, ref movs);
+            MergeSort(vet, meio + 1, dir, ref comps, ref movs);
+            Merge(vet, esq, meio, dir, ref comps, ref movs);
         }
     }
-    static void Ajustar(int[] array, int n, int i, ref long comps, ref long movs)
+    static void Ajustar(int[] vet, int n, int i, ref long comps, ref long movs)
     {
         int maior = i;
-        int esquerda = 2 * i + 1;
-        int direita = 2 * i + 2;
+        int esq = 2 * i + 1;
+        int dir = 2 * i + 2;
 
-        if (esquerda < n)
+        if (esq < n)
         {
             comps++;
-            if (array[esquerda] > array[maior])
-                maior = esquerda;
+            if (vet[esq] > vet[maior])
+                maior = esq;
         }
 
-        if (direita < n)
+        if (dir < n)
         {
             comps++;
-            if (array[direita] > array[maior])
-                maior = direita;
+            if (vet[dir] > vet[maior])
+                maior = dir;
         }
 
         if (maior != i)
         {
-            int temp = array[i]; movs++;
-            array[i] = array[maior]; movs++;
-            array[maior] = temp; movs++;
+            int temp = vet[i]; movs++;
+            vet[i] = vet[maior]; movs++;
+            vet[maior] = temp; movs++;
 
-            Ajustar(array, n, maior, ref comps, ref movs);
+            Ajustar(vet, n, maior, ref comps, ref movs);
         }
     }
-    static void HeapSort(int[] array, int n, ref long comps, ref long movs)
+    static void HeapSort(int[] vet, int n, ref long comps, ref long movs)
     {
         for (int i = n / 2 - 1; i >= 0; i--)
         {
-            Ajustar(array, n, i, ref comps, ref movs);
+            Ajustar(vet, n, i, ref comps, ref movs);
         }
 
         for (int i = n - 1; i > 0; i--)
         {
-            int temp = array[0]; movs++;  
-            array[0] = array[i]; movs++;
-            array[i] = temp; movs++;
+            int temp = vet[0]; movs++;  
+            vet[0] = vet[i]; movs++;
+            vet[i] = temp; movs++;
 
-            Ajustar(array, i, 0, ref comps, ref movs);
+            Ajustar(vet, i, 0, ref comps, ref movs);
         }
     }
 
@@ -273,29 +273,29 @@ class Program
         if (esq < j) Quick(vet, esq, j, ref comps, ref movs);
         if (i < dir) Quick(vet, i, dir, ref comps, ref movs);
     }
-    static void Merge(double[] array, int esquerda, int meio, int direita, ref long comps, ref long movs)
+    static void Merge(double[] vet, int esq, int meio, int dir, ref long comps, ref long movs)
     {
-        int n1 = meio - esquerda + 1;
-        int n2 = direita - meio;
+        int n1 = meio - esq + 1;
+        int n2 = dir - meio;
 
         double[] L = new double[n1];
         double[] R = new double[n2];
 
-        for (int i = 0; i < n1; i++) { L[i] = array[esquerda + i]; movs++; }
-        for (int j = 0; j < n2; j++) { R[j] = array[meio + 1 + j]; movs++; }
+        for (int i = 0; i < n1; i++) { L[i] = vet[esq + i]; movs++; }
+        for (int j = 0; j < n2; j++) { R[j] = vet[meio + 1 + j]; movs++; }
 
-        int k = esquerda, x = 0, y = 0;
+        int k = esq, x = 0, y = 0;
 
         while (x < n1 && y < n2)
         {
             comps++;
             if (L[x] <= R[y])
             {
-                array[k] = L[x]; x++;
+                vet[k] = L[x]; x++;
             }
             else
             {
-                array[k] = R[y]; y++;
+                vet[k] = R[y]; y++;
             }
             movs++;
             k++;
@@ -303,68 +303,68 @@ class Program
 
         while (x < n1)
         {
-            array[k] = L[x]; x++; k++; movs++;
+            vet[k] = L[x]; x++; k++; movs++;
         }
 
         while (y < n2)
         {
-            array[k] = R[y]; y++; k++; movs++;
+            vet[k] = R[y]; y++; k++; movs++;
         }
     }
-    static void MergeSort(double[] array, int esquerda, int direita, ref long comps, ref long movs)
+    static void MergeSort(double[] vet, int esq, int dir, ref long comps, ref long movs)
     {
-        if (esquerda < direita)
+        if (esq < dir)
         {
-            int meio = (esquerda + direita) / 2;
+            int meio = (esq + dir) / 2;
 
-            MergeSort(array, esquerda, meio, ref comps, ref movs);
-            MergeSort(array, meio + 1, direita, ref comps, ref movs);
-            Merge(array, esquerda, meio, direita, ref comps, ref movs);
+            MergeSort(vet, esq, meio, ref comps, ref movs);
+            MergeSort(vet, meio + 1, dir, ref comps, ref movs);
+            Merge(vet, esq, meio, dir, ref comps, ref movs);
         }
     }
-    static void Ajustar(double[] array, int n, int i, ref long comps, ref long movs)
+    static void Ajustar(double[] vet, int n, int i, ref long comps, ref long movs)
     {
         int maior = i;
-        int esquerda = 2 * i + 1;
-        int direita = 2 * i + 2;
+        int esq = 2 * i + 1;
+        int dir = 2 * i + 2;
 
-        if (esquerda < n)
+        if (esq < n)
         {
             comps++;
-            if (array[esquerda] > array[maior])
-                maior = esquerda;
+            if (vet[esq] > vet[maior])
+                maior = esq;
         }
 
-        if (direita < n)
+        if (dir < n)
         {
             comps++;
-            if (array[direita] > array[maior])
-                maior = direita;
+            if (vet[dir] > vet[maior])
+                maior = dir;
         }
 
         if (maior != i)
         {
-            double temp = array[i]; movs++;
-            array[i] = array[maior]; movs++;
-            array[maior] = temp; movs++;
+            double temp = vet[i]; movs++;
+            vet[i] = vet[maior]; movs++;
+            vet[maior] = temp; movs++;
 
-            Ajustar(array, n, maior, ref comps, ref movs);
+            Ajustar(vet, n, maior, ref comps, ref movs);
         }
     }
-    static void HeapSort(double[] array, int n, ref long comps, ref long movs)
+    static void HeapSort(double[] vet, int n, ref long comps, ref long movs)
     {
         for (int i = n / 2 - 1; i >= 0; i--)
         {
-            Ajustar(array, n, i, ref comps, ref movs);
+            Ajustar(vet, n, i, ref comps, ref movs);
         }
 
         for (int i = n - 1; i > 0; i--)
         {
-            double temp = array[0]; movs++;
-            array[0] = array[i]; movs++;
-            array[i] = temp; movs++;
+            double temp = vet[0]; movs++;
+            vet[0] = vet[i]; movs++;
+            vet[i] = temp; movs++;
 
-            Ajustar(array, i, 0, ref comps, ref movs);
+            Ajustar(vet, i, 0, ref comps, ref movs);
         }
     }
 

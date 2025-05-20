@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,16 @@ namespace Questão2
 {
     internal class Q3
     {
+        // Preenchimento do vetor
+        static void PreencherInt(int[] vet, int n)
+        {
+            Random r = new Random(10);
+            for (int i = 0; i < n; i++)
+            {
+                vet[i] = r.Next(1, 100);
+            }
+        }
+
         // Algoritmos de ordenação
         static void Quick(int[] vet, int esq, int dir)
         {
@@ -33,7 +44,7 @@ namespace Questão2
             if (esq < j) Quick(vet, esq, j);
             if (i < dir) Quick(vet, i, dir);
         }
-        void CountingSort(int[] vet, int n)
+        static void CountingSort(int[] vet, int n)
         {
             int[] count = new int[GetMaior(vet, n) + 1];
             int[] ordenado = new int[n];
@@ -59,7 +70,7 @@ namespace Questão2
                 vet[i] = ordenado[i];
             }
         }
-        int GetMaior(int[] vet, int n)
+        static int GetMaior(int[] vet, int n)
         {
             int maior = vet[0];
             for (int i = 1; i < n; i++)
@@ -74,7 +85,35 @@ namespace Questão2
 
         static void Main(string[] args)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            TimeSpan ts;
+            string elapsedTime;
+            int[] vet = new int[1000000];
 
+            // ------------------------- QUICK -------------------------
+            PreencherInt(vet, vet.Length);
+            Console.WriteLine("INT---QUICK---ALT");
+            stopWatch.Start();
+            Quick(vet, 0, vet.Length - 1);
+            stopWatch.Stop();
+            ts = stopWatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            Console.WriteLine("Tempo " + elapsedTime);
+            stopWatch.Reset();
+
+
+            // ------------------------- COUNTING -------------------------
+            PreencherInt(vet, vet.Length);
+            Console.WriteLine("INT---QUICK---ALT");
+            stopWatch.Start();
+            CountingSort(vet, vet.Length);
+            stopWatch.Stop();
+            ts = stopWatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            Console.WriteLine("Tempo " + elapsedTime);
+            stopWatch.Reset();
         }
     }
 }

@@ -381,221 +381,227 @@ class Program
             switch (op1) // Decimais ou inteiros
             {
                 case 1: // Inteiros
+
+                    // Declarando o contador 
+                    TimeSpan ts;
+                    string elapsedTime;
+                    long comps, movs;
+
                     int[] vetI;
-                    Console.WriteLine("|---MENU (2)---|\n(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Sair");
+                    Console.WriteLine("|---MENU (2)---|\n(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Voltar");
                     int op2 = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("|---MENU (3)---|\n(1). Aleatório\n(2). Crescente\n(3). Decrescente");
+                    int op3 = int.Parse(Console.ReadLine());
                     do
                     {
-                        // Declarando o contador 
-                        TimeSpan ts;
-                        string elapsedTime;
-                        long comps, movs;
-
-                        switch (op2) // Quantidade de elementos
+                        switch (op3) // Ordem de preenchimento
                         {
+                            case 1: // Aleatório
+                                switch (op2) // Quantidade de elementos
+                                {
 
-                            case 1: // 1.000 elementos
-                                vetI = new int[1000];
+                                    case 1: // 1.000 elementos
+                                        vetI = new int[1000];
 
-                                // Seleção
-                                PreencherInt(vetI, vetI.Length);
-                                Console.WriteLine("----SELEÇÃO----");
-                                stopWatch.Start();
-                                Selecao(vetI, vetI.Length, out comps, out movs);
-                                stopWatch.Stop();
+                                        // Seleção
+                                        PreencherInt(vetI, vetI.Length);
+                                        Console.WriteLine("INT---SELEÇÃO---1K");
+                                        stopWatch.Start();
+                                        Selecao(vetI, vetI.Length, out comps, out movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Inserção
-                                PreencherInt(vetI, vetI.Length);
-                                Console.WriteLine("----INSERÇÃO----");
-                                stopWatch.Start();
-                                Insercao(vetI, vetI.Length, out comps, out movs);
-                                stopWatch.Stop();
+                                        // Inserção
+                                        PreencherInt(vetI, vetI.Length);
+                                        Console.WriteLine("INT---INSERÇÃO---1K");
+                                        stopWatch.Start();
+                                        Insercao(vetI, vetI.Length, out comps, out movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Bolha
-                                PreencherInt(vetI, vetI.Length);
-                                Console.WriteLine("----BOLHA----");
-                                stopWatch.Start();
-                                Bolha(vetI, vetI.Length, out comps, out movs);
-                                stopWatch.Stop();
+                                        // Bolha
+                                        PreencherInt(vetI, vetI.Length);
+                                        Console.WriteLine("INT---BOLHA---1K");
+                                        stopWatch.Start();
+                                        Bolha(vetI, vetI.Length, out comps, out movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Quick
-                                PreencherInt(vetI, vetI.Length);
-                                int esq = 0, dir = vetI.Length - 1;
-                                Console.WriteLine("----QUICK----");
-                                stopWatch.Start();
-                                movs = 0; comps = 0;
-                                Quick(vetI, esq, dir, ref comps, ref movs);
-                                stopWatch.Stop();
+                                        // Quick
+                                        PreencherInt(vetI, vetI.Length);
+                                        int esq = 0, dir = vetI.Length - 1;
+                                        Console.WriteLine("INT---QUICK---1K");
+                                        stopWatch.Start();
+                                        movs = 0; comps = 0;
+                                        Quick(vetI, esq, dir, ref comps, ref movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Merge
-                                PreencherInt(vetI, vetI.Length);
-                                esq = 0; dir = vetI.Length - 1;
-                                Console.WriteLine("----MERGE----");
-                                stopWatch.Start();
-                                movs = 0; comps = 0;
-                                MergeSort(vetI, esq, dir, ref comps, ref movs);
-                                stopWatch.Stop();
+                                        // Merge
+                                        PreencherInt(vetI, vetI.Length);
+                                        esq = 0; dir = vetI.Length - 1;
+                                        Console.WriteLine("INT---MERGE---1K");
+                                        stopWatch.Start();
+                                        movs = 0; comps = 0;
+                                        MergeSort(vetI, esq, dir, ref comps, ref movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Heap
-                                PreencherInt(vetI, vetI.Length);
-                                esq = 0; dir = vetI.Length - 1;
-                                Console.WriteLine("----HEAP----");
-                                stopWatch.Start();
-                                movs = 0; comps = 0;
-                                HeapSort(vetI, vetI.Length, ref comps, ref movs);
-                                stopWatch.Stop();
+                                        // Heap
+                                        PreencherInt(vetI, vetI.Length);
+                                        esq = 0; dir = vetI.Length - 1;
+                                        Console.WriteLine("INT---HEAP---1K");
+                                        stopWatch.Start();
+                                        movs = 0; comps = 0;
+                                        HeapSort(vetI, vetI.Length, ref comps, ref movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                break;
+                                        break;
 
-                            case 2: // 500.000 elementos
-                                vetI = new int[500000];
+                                    case 2: // 500.000 elementos
+                                        vetI = new int[500000];
 
-                                // Seleção
-                                PreencherInt(vetI, vetI.Length);
-                                Console.WriteLine("----SELEÇÃO----");
-                                stopWatch.Start();
-                                Selecao(vetI, vetI.Length, out comps, out movs);
-                                stopWatch.Stop();
+                                        // Seleção
+                                        PreencherInt(vetI, vetI.Length);
+                                        Console.WriteLine("INT---SELEÇÃO---500K");
+                                        stopWatch.Start();
+                                        Selecao(vetI, vetI.Length, out comps, out movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Inserção
-                                PreencherInt(vetI, vetI.Length);
-                                Console.WriteLine("----INSERÇÃO----");
-                                stopWatch.Start();
-                                Insercao(vetI, vetI.Length, out comps, out movs);
-                                stopWatch.Stop();
+                                        // Inserção
+                                        PreencherInt(vetI, vetI.Length);
+                                        Console.WriteLine("INT---INSERÇÃO---500K");
+                                        stopWatch.Start();
+                                        Insercao(vetI, vetI.Length, out comps, out movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Bolha
-                                PreencherInt(vetI, vetI.Length);
-                                Console.WriteLine("----BOLHA----");
-                                stopWatch.Start();
-                                Bolha(vetI, vetI.Length, out comps, out movs);
-                                stopWatch.Stop();
+                                        // Bolha
+                                        PreencherInt(vetI, vetI.Length);
+                                        Console.WriteLine("INT---BOLHA---500K");
+                                        stopWatch.Start();
+                                        Bolha(vetI, vetI.Length, out comps, out movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Quick
-                                PreencherInt(vetI, vetI.Length);
-                                esq = 0;  dir = vetI.Length - 1;
-                                Console.WriteLine("----QUICK----");
-                                stopWatch.Start();
-                                movs = 0; comps = 0;
-                                Quick(vetI, esq, dir, ref comps, ref movs);
-                                stopWatch.Stop();
+                                        // Quick
+                                        PreencherInt(vetI, vetI.Length);
+                                        esq = 0; dir = vetI.Length - 1;
+                                        Console.WriteLine("INT---QUICK---500K");
+                                        stopWatch.Start();
+                                        movs = 0; comps = 0;
+                                        Quick(vetI, esq, dir, ref comps, ref movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Merge
-                                PreencherInt(vetI, vetI.Length);
-                                esq = 0; dir = vetI.Length - 1;
-                                Console.WriteLine("----MERGE----");
-                                stopWatch.Start();
-                                movs = 0; comps = 0;
-                                MergeSort(vetI, esq, dir, ref comps, ref movs);
-                                stopWatch.Stop();
+                                        // Merge
+                                        PreencherInt(vetI, vetI.Length);
+                                        esq = 0; dir = vetI.Length - 1;
+                                        Console.WriteLine("INT---MERGE---500K");
+                                        stopWatch.Start();
+                                        movs = 0; comps = 0;
+                                        MergeSort(vetI, esq, dir, ref comps, ref movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
-                                // Heap
-                                PreencherInt(vetI, vetI.Length);
-                                esq = 0; dir = vetI.Length - 1;
-                                Console.WriteLine("----HEAP----");
-                                stopWatch.Start();
-                                movs = 0; comps = 0;
-                                HeapSort(vetI, vetI.Length, ref comps, ref movs);
-                                stopWatch.Stop();
+                                        // Heap
+                                        PreencherInt(vetI, vetI.Length);
+                                        esq = 0; dir = vetI.Length - 1;
+                                        Console.WriteLine("INT---HEAP---500K");
+                                        stopWatch.Start();
+                                        movs = 0; comps = 0;
+                                        HeapSort(vetI, vetI.Length, ref comps, ref movs);
+                                        stopWatch.Stop();
 
-                                ts = stopWatch.Elapsed;
-                                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                                    ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                                Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
-                                stopWatch.Reset();
+                                        ts = stopWatch.Elapsed;
+                                        elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                            ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                                        Console.WriteLine("Tempo " + elapsedTime + $"\nMovimentaçõe:{movs}\nComparações:{comps}\n");
+                                        stopWatch.Reset();
 
+                                        break;
+                                }
+
+                                if (op2 != 3)
+                                {
+                                    Console.WriteLine("|---MENU (2)---|\n(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Voltar");
+                                    op2 = int.Parse(Console.ReadLine());
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Voltando...");
+                                }
                             break;
-                        }
+                        } while (op2 != 3) ;
+                        break;
+                    } while (op3 != 4);
 
-                        if (op2 != 3)
-                        {
-                            Console.WriteLine("|---MENU (2)---|\n(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Sair");
-                            op2 = int.Parse(Console.ReadLine());
-                        }
-                        else
-                        {
-                            Console.WriteLine("Voltando...");
-                        }
 
-                    } while (op2 != 3);
                 break;
                 case 2: // Decimais
                     double[] vetD;
-                    Console.WriteLine("|---MENU (2)---|\n(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Sair");
+                    Console.WriteLine("|---MENU (2)---|\n(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Voltar");
                     op2 = int.Parse(Console.ReadLine());
                     do
                     {
-                        // Declarando o contador 
-                        TimeSpan ts;
-                        string elapsedTime;
-                        long comps, movs;
-
                         switch (op2) // Quantidade de elementos
                         {
 
@@ -604,7 +610,7 @@ class Program
 
                                 // Seleção
                                 PreecnherDouble(vetD, vetD.Length);
-                                Console.WriteLine("----SELEÇÃO----");
+                                Console.WriteLine("DOB---SELEÇÃO---1K");
                                 stopWatch.Start();
                                 Selecao(vetD, vetD.Length, out comps, out movs);
                                 stopWatch.Stop();
@@ -617,7 +623,7 @@ class Program
 
                                 // Inserção
                                 PreecnherDouble(vetD, vetD.Length);
-                                Console.WriteLine("----INSERÇÃO----");
+                                Console.WriteLine("DOB---INSERÇÃO---1K");
                                 stopWatch.Start();
                                 Insercao(vetD, vetD.Length, out comps, out movs);
                                 stopWatch.Stop();
@@ -630,7 +636,7 @@ class Program
 
                                 // Bolha
                                 PreecnherDouble(vetD, vetD.Length);
-                                Console.WriteLine("----BOLHA----");
+                                Console.WriteLine("DOB---BOLHA---1K");
                                 stopWatch.Start();
                                 Bolha(vetD, vetD.Length, out comps, out movs);
                                 stopWatch.Stop();
@@ -644,7 +650,7 @@ class Program
                                 // Quick
                                 PreecnherDouble(vetD, vetD.Length);
                                 int esq = 0, dir = vetD.Length - 1;
-                                Console.WriteLine("----QUICK----");
+                                Console.WriteLine("DOB---QUICK---1K");
                                 stopWatch.Start();
                                 movs = 0; comps = 0;
                                 Quick(vetD, esq, dir, ref comps, ref movs);
@@ -659,7 +665,7 @@ class Program
                                 // Merge
                                 PreecnherDouble(vetD, vetD.Length);
                                 esq = 0; dir = vetD.Length - 1;
-                                Console.WriteLine("----MERGE----");
+                                Console.WriteLine("DOB---MERGE---1K");
                                 stopWatch.Start();
                                 movs = 0; comps = 0;
                                 MergeSort(vetD, esq, dir, ref comps, ref movs);
@@ -674,7 +680,7 @@ class Program
                                 // Heap
                                 PreecnherDouble(vetD, vetD.Length);
                                 esq = 0; dir = vetD.Length - 1;
-                                Console.WriteLine("----HEAP----");
+                                Console.WriteLine("DOB---HEAP---1K");
                                 stopWatch.Start();
                                 movs = 0; comps = 0;
                                 HeapSort(vetD, vetD.Length, ref comps, ref movs);
@@ -693,7 +699,7 @@ class Program
 
                                 // Seleção
                                 PreecnherDouble(vetD, vetD.Length);
-                                Console.WriteLine("----SELEÇÃO----");
+                                Console.WriteLine("DOB---SELEÇÃO---500K");
                                 stopWatch.Start();
                                 Selecao(vetD, vetD.Length, out comps, out movs);
                                 stopWatch.Stop();
@@ -706,7 +712,7 @@ class Program
 
                                 // Inserção
                                 PreecnherDouble(vetD, vetD.Length);
-                                Console.WriteLine("----INSERÇÃO----");
+                                Console.WriteLine("DOB---INSERÇÃO---500K");
                                 stopWatch.Start();
                                 Insercao(vetD, vetD.Length, out comps, out movs);
                                 stopWatch.Stop();
@@ -719,7 +725,7 @@ class Program
 
                                 // Bolha
                                 PreecnherDouble(vetD, vetD.Length);
-                                Console.WriteLine("----BOLHA----");
+                                Console.WriteLine("DOB---BOLHA---500K");
                                 stopWatch.Start();
                                 Bolha(vetD, vetD.Length, out comps, out movs);
                                 stopWatch.Stop();
@@ -733,7 +739,7 @@ class Program
                                 // Quick
                                 PreecnherDouble(vetD, vetD.Length);
                                 esq = 0; dir = vetD.Length - 1;
-                                Console.WriteLine("----QUICK----");
+                                Console.WriteLine("DOB---QUICK---500K");
                                 stopWatch.Start();
                                 movs = 0; comps = 0;
                                 Quick(vetD, esq, dir, ref comps, ref movs);
@@ -748,7 +754,7 @@ class Program
                                 // Merge
                                 PreecnherDouble(vetD, vetD.Length);
                                 esq = 0; dir = vetD.Length - 1;
-                                Console.WriteLine("----MERGE----");
+                                Console.WriteLine("DOB---MERGE---500K");
                                 stopWatch.Start();
                                 movs = 0; comps = 0;
                                 MergeSort(vetD, esq, dir, ref comps, ref movs);
@@ -763,7 +769,7 @@ class Program
                                 // Heap
                                 PreecnherDouble(vetD, vetD.Length);
                                 esq = 0; dir = vetD.Length - 1;
-                                Console.WriteLine("----HEAP----");
+                                Console.WriteLine("DOB---HEAP--500K");
                                 stopWatch.Start();
                                 movs = 0; comps = 0;
                                 HeapSort(vetD, vetD.Length, ref comps, ref movs);
@@ -780,7 +786,7 @@ class Program
 
                         if (op2 != 3)
                         {
-                            Console.WriteLine("|---MENU (2)---|\n(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Sair");
+                            Console.WriteLine("|---MENU (2)---|\n(1). 1.000 elementos\n(2). 500.000 elementos\n(3). Voltar");
                             op2 = int.Parse(Console.ReadLine());
                         }
                         else

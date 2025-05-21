@@ -51,7 +51,13 @@ namespace Questão_6
         }
         static void Imprime(int[] vet)
         {
-            Console.WriteLine(string.Join(", ", vet));
+            for (int i = 0; i < vet.Length; i++)
+            {
+                Console.Write(vet[i]);
+                if (i < vet.Length - 1)
+                    Console.Write(", ");
+            }
+            Console.WriteLine();
         }
         static void Selecao(int[] vet, int n)
         {

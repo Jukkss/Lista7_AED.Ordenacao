@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{728C1067-94C7-4DB9-BB31-8119F7BE3BA9}</ProjectGuid>
+    <ProjectGuid>{1E5E3718-8370-443F-BC6D-BBF92F4BDC1C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Questão_4</RootNamespace>
-    <AssemblyName>Questão 4</AssemblyName>
+    <RootNamespace>Questão_6</RootNamespace>
+    <AssemblyName>Questão 6</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,13 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Jogador.cs" />
-    <Compile Include="Q4.cs" />
+    <Compile Include="Q6.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="bin\Debug\players.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -105,7 +105,7 @@ namespace Questão2
 
             // ------------------------- COUNTING -------------------------
             PreencherInt(vet, vet.Length);
-            Console.WriteLine("INT---QUICK---ALT");
+            Console.WriteLine("INT---COUNTING---ALT");
             stopWatch.Start();
             CountingSort(vet, vet.Length);
             stopWatch.Stop();
